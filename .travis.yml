@@ -5,16 +5,16 @@ env:
 #    - PATH=$M2_HOME/bin:$PATH
 
 install:
-  - ls -la /usr/local
   - ls -lad /usr/local/maven
-  - cd ..
+  - pushd ..
   - wget http://apache.mirrors.pair.com/maven/maven-3/3.0.5/binaries/apache-maven-3.0.5-bin.tar.gz
   - tar zxf apache-maven-3.0.5-bin.tar.gz
-  - cd maven-3.0.5
+  - popd
   - sudo rm /usr/local/maven
   - sudo ln -s /home/travis/build/PatrickRoumanoff/apache-maven-3.0.5 /usr/local/maven
+  - ls -lad /usr/local/maven
 
-script: sh -x /home/travis/build/PatrickRoumanoff/maven-3.0.5/target/apache-maven-3.0.5/bin/mvn install
+script: mvn install
 
 language: java
 jdk: oraclejdk7
